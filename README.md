@@ -1,8 +1,8 @@
-# coin-collector-game
+# Coin-collector
 
 ## Description
 
-Kraken-Brigade is a game where the player has to move ships horizontally and shoot up incoming tentacles that appear from the top of the screen and move to the bottom. The game ends when four tentacles get stacked in front of the fort wall. After that, a score is calculated based on tentacle destroyed and the amount of time the game lasted.
+Coin-Collector is a game where the player have to move horizontally and collect the two size of coin from top of the screen to the bottom. There are 30seconds time limit and automatically game is finised. The score is calculate based on the coins size which bigger size is 50points and smaller coin is 30 points.
 
 ## MVP (DOM - CANVAS)
 
