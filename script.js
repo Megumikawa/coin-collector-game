@@ -13,15 +13,6 @@ fieldImg.src = 'images/bg-field.jpg'
 let playerImg = document.createElement('img')
 playerImg.src = 'images/player-right.png'
 
-let cloudLeftImg = document.createElement('img')
-cloudLeftImg.src = 'images/cloud.png'
-
-let cloudMiddleImg = document.createElement('img')
-cloudMiddleImg.src = 'images/cloud.png'
-
-let cloudRightImg = document.createElement('img')
-cloudRightImg.src = 'images/cloud.png'
-
 let rockImg = document.createElement('img')
 rockImg.src = 'images/rock.png'
 
@@ -30,8 +21,8 @@ coinImg.src = 'images/coin.png'
 
 let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
 
-let playerX = 200
-let playerY = canvas.height - 165
+let playerX = 200  //start position
+let playerY = canvas.height - 165  //start position
 let vplayerY = 0  //speed
 let isJump = false  // jump or not jump
 
@@ -40,15 +31,15 @@ let isJump = false  // jump or not jump
 let input_key_buffer = new Array();
 
 window.addEventListener("keydown", handlekeydown)
-function handlekeydown(e) {
-  e.preventDefault(); //
-  input_key_buffer[e.keyCode] = true;
+function handlekeydown(event) {
+  event.preventDefault(); //
+  input_key_buffer[event.keyCode] = true;
 }
 
 window.addEventListener("keyup", handlekeyup)
-function handlekeyup(e) {
-  e.preventDefault()
-  input_key_buffer[e.keyCode] = false
+function handlekeyup(event) {
+  event.preventDefault()
+  input_key_buffer[event.keyCode] = false
 }
 
 window.addEventListener("load", update);
@@ -69,6 +60,7 @@ function update() {
     playerY = playerY + vplayerY
     vplayerY = vplayerY + 0.5
   }
+  
   window.requestAnimationFrame(update)
 }
 
@@ -100,9 +92,6 @@ function update() {
 
 function draw() {
   ctx.drawImage(backImg, 0, 0)
-  // ctx.drawImage(cloudLeftImg, 70, 140 )
-  // ctx.drawImage(cloudMiddleImg, 180, 330 )
-  // ctx.drawImage(cloudRightImg, canvas.width - 160, 180 )
   
 
   for (let i = 0; i < rocks.length; i++) {
@@ -126,22 +115,26 @@ function draw() {
   ctx.drawImage(playerImg, playerX, playerY)
   ctx.drawImage(coinImg, 20, 0)
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
-  
 
   ctx.font = '20px verdana'
   ctx.fillText('score:' + score, canvas.width - 100, 50)
 
-  // window.requestAnimationFrame(update)
-  
 }
 
-
+let i = 0
+let intervalId = setInterval(function(){
+  i++
+  console.log('hello')
+  if(i > 30){
+    clearTimeout(intervalId)
+  }
+},1000)
 
 intervalID = setInterval( () => {
   requestAnimationFrame(draw)
 }, 10)
 
-window.requestAnimationFrame(update)
+
 
 
 
