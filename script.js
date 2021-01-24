@@ -27,27 +27,61 @@ rockImg.src = 'images/rock.png'
 
 let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
 
-let playerX = 200
-let playerY = canvas.height - 165
-let playerIncrement = 2
-// playerY -= playerIncrement
+let playerX =  0 //200
+let playerY = 300  //canvas.height - 165
+let vplayerY = 0  //speed
+let isJump = false  // jump or not jump
+
 
 // --------Player----------
-window.addEventListener('keydown', keydown, true)
+let input_key_buffer = new Array();
 
-function keydown(event) {
-  let movement = event.keyCode
-  switch (movement) {
-    case 37: playerX -= 10; //left
-      break;
-    case 39: playerX += 10; //right
-      break;
-    case 38: playerY -= 1 ; //up
-      break;
-    case 40: playerY += 10; //down
-    break;
-  }
+window.addEventListener("keydown", handlekeydown)
+function handlekeydown(e) {
+  e.preventDefault(); //
+  input_key_buffer[e.keyCode] = true;
 }
+
+window.addEventListener("keyup", handlekeyup)
+function handlekeyup(e) {
+  e.preventDefault()
+  input_key_buffer[e.keyCode] = false
+}
+
+window.addEventListener("load", update);
+function update() {
+  ctx.drawImage(playerImg, playerX, playerY)
+  // ctx.clearRect(0, 0, 500, 700)
+  if (input_key_buffer[37]) {    //left
+    playerX = playerX - 10
+  }
+  if (input_key_buffer[39]) {    //right
+    playerX = playerX + 10
+  }
+  if (input_key_buffer[38]) {    //right
+    vplayerY = -1;
+    isJump = true;
+  }
+  if (isJump) {
+    playerY = playerY + vplayerY
+    vplayerY = vplayerY + 0.5
+  }
+  
+  // window.requestAnimationFrame(update);
+}
+
+// function keydown(event) {
+//   let movement = event.keyCode
+//   switch (movement) {
+//     case 37: playerX -= 10; //left
+//       break;
+//     case 39: playerX += 10; //right
+//       break;
+//     case 38: playerY -= 10;//up
+//       break;
+//   }
+// ↑↑ can't jump
+// }
 // --------------------------
 
 // document.addEventListener('keydown', () => {
@@ -92,7 +126,7 @@ function draw() {
   ctx.font = '20px verdana'
   ctx.fillText('score:' + score, canvas.width - 100, 50)
 
-
+  // window.requestAnimationFrame(update)
   
 }
 
@@ -101,6 +135,10 @@ function draw() {
 intervalID = setInterval( () => {
   requestAnimationFrame(draw)
 }, 10)
+
+window.requestAnimationFrame(update)
+
+
 
 
 
