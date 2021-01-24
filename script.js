@@ -3,7 +3,7 @@ let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
 let intervalID = 0
 let score = 0
-let 
+
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
