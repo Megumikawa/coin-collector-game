@@ -4,7 +4,6 @@ canvas.style.border = '2px solid black'
 let intervalID = 0
 let score = 0
 
-
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
 
@@ -31,8 +30,8 @@ coinImg.src = 'images/coin.png'
 
 let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
 
-let playerX =  0 //200
-let playerY = 300  //canvas.height - 165
+let playerX = 200
+let playerY = canvas.height - 165
 let vplayerY = 0  //speed
 let isJump = false  // jump or not jump
 
@@ -55,7 +54,7 @@ function handlekeyup(e) {
 window.addEventListener("load", update);
 function update() {
   ctx.drawImage(playerImg, playerX, playerY)
-  ctx.clearRect(0, 0, 9999, 9999)
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
   if (input_key_buffer[37]) {    //left
     playerX = playerX - 10
   }
@@ -63,13 +62,14 @@ function update() {
     playerX = playerX + 10
   }
   if (input_key_buffer[38]) {    //right
-    vplayerY = -1;
+    vplayerY = -8;
     isJump = true;
   }
   if (isJump) {
     playerY = playerY + vplayerY
     vplayerY = vplayerY + 0.5
-  }  
+  }
+  window.requestAnimationFrame(update)
 }
 
 // function keydown(event) {
@@ -79,7 +79,7 @@ function update() {
 //       break;
 //     case 39: playerX += 10; //right
 //       break;
-//     case 38: jumping = setInterval(Jump, 100)
+//     case 38: playerY -= 10;  //up
 //       break;
 //   }
 // ↑↑ can't jump
@@ -95,7 +95,6 @@ function update() {
 // })
 
 //----------coin-----------
-
 
 
 
