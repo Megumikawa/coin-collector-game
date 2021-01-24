@@ -3,6 +3,7 @@ let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
 let intervalID = 0
 let score = 0
+let 
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
@@ -24,6 +25,9 @@ cloudRightImg.src = 'images/cloud.png'
 
 let rockImg = document.createElement('img')
 rockImg.src = 'images/rock.png'
+
+let coinImg = document.createElement('img')
+coinImg.src = 'images/coin.png'
 
 let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
 
@@ -51,7 +55,7 @@ function handlekeyup(e) {
 window.addEventListener("load", update);
 function update() {
   ctx.drawImage(playerImg, playerX, playerY)
-  // ctx.clearRect(0, 0, 500, 700)
+  ctx.clearRect(0, 0, 9999, 9999)
   if (input_key_buffer[37]) {    //left
     playerX = playerX - 10
   }
@@ -65,9 +69,7 @@ function update() {
   if (isJump) {
     playerY = playerY + vplayerY
     vplayerY = vplayerY + 0.5
-  }
-  
-  // window.requestAnimationFrame(update);
+  }  
 }
 
 // function keydown(event) {
@@ -77,7 +79,7 @@ function update() {
 //       break;
 //     case 39: playerX += 10; //right
 //       break;
-//     case 38: playerY -= 10;//up
+//     case 38: jumping = setInterval(Jump, 100)
 //       break;
 //   }
 // ↑↑ can't jump
@@ -91,6 +93,9 @@ function update() {
 // document.addEventListener('keyup', () => {
 //   playerIncrement = 2
 // })
+
+//----------coin-----------
+
 
 
 
@@ -120,6 +125,7 @@ function draw() {
   }
 
   ctx.drawImage(playerImg, playerX, playerY)
+  ctx.drawImage(coinImg, 20, 0)
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   
 
