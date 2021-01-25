@@ -3,7 +3,7 @@ let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
 let intervalId = 0
 let score = 0
-let currentTime = 0
+// let currentTime = 0
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
@@ -49,18 +49,19 @@ function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   if (input_key_buffer[37]) {    //left
     playerX = playerX - 10
-  }
-  if (input_key_buffer[39]) {    //right
+  } 
+  else if (input_key_buffer[39]) {    //right
     playerX = playerX + 10
-  }
-  if (input_key_buffer[38]) {    //right
+  } 
+  else if (input_key_buffer[38]) {    //right
     vplayerY = -8;
     isJump = true;
   }
-  if (isJump) {
+  else if (isJump) {
     playerY = playerY + vplayerY
     vplayerY = vplayerY + 0.5
   }
+  // playerY +=
   
   window.requestAnimationFrame(update)
 }
@@ -127,24 +128,36 @@ function draw() {
 //   }
 // }, 1000)
 
+// let gameoverButton = document.querySelector('#start')
+// function countdown() {
+//   // let count = document.querySelector('.button-area span')
+  
+//   gameoverButton.addEventListener('click', function(){
+//     let intervalIdEnd = setInterval(function(){
+//       i--
+//       if(i < -1 ) {
+//       console.log()
+//       clearInterval(intervalIdEnd)
+//     }
+//   }, 1000)
+//   window.requestAnimationFrame(countdown)
+// })
 
-function countdown() {
-  let gameoverButton = document.querySelector('#start')
-  let count = document.querySelector('.button-area span')
+// }
 
-  gameoverButton.addEventListener('click', function(){
-    let intervalIdEnd = setInterval(function(){
-      i--
-      if(i > 0) {
-      console.log(count)
-      clearInterval(intervalIdEnd)
-    }
-  }, 1000)
-  window.requestAnimationFrame(countdown)
-})
 
+//--------timer--------
+let startBtn = document.querySelector('#start')
+let currentTime = document.querySelector('#timer')
+
+let clock = new Timer ()
+
+function updateTime() {
+  currentTime.innerHTML = clock.time
 }
-
+startBtn.addEventListener('click', () => {
+  clock.start(updateTime)
+})
 
 intervalId = setInterval( () => {
   requestAnimationFrame(draw)
