@@ -14,6 +14,9 @@ fieldImg.src = 'images/bg-field.jpg'
 let playerImg = document.createElement('img')
 playerImg.src = 'images/player-right.png'
 
+let playerLeftImg = document.createElement('img')
+playerLeftImg.src = 'images/player-left.png'
+
 let rockImg = document.createElement('img')
 rockImg.src = 'images/rock.png'
 
@@ -47,22 +50,26 @@ window.addEventListener("load", update);
 function update() {
   ctx.drawImage(playerImg, playerX, playerY)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+  
   if (input_key_buffer[37]) {    //left
     playerX = playerX - 10
   } 
   else if (input_key_buffer[39]) {    //right
     playerX = playerX + 10
   } 
-  else if (input_key_buffer[38]) {    //right
+  else if (input_key_buffer[38]) {    //jump
     vplayerY = -8;
     isJump = true;
+    playerLeftImg
   }
   else if (isJump) {
     playerY = playerY + vplayerY
     vplayerY = vplayerY + 0.5
   }
-  // playerY +=
-  
+  // else if(playerY) {
+  //   + playerY = 
+  // }
+
   window.requestAnimationFrame(update)
 }
 

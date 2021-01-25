@@ -16,3 +16,9 @@
 //   ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 // }
 
+let imgCnt = 4
+let arrCoin = [] //coin info arr
+let canvasX = 500
+let canvasY = 700
+let imgBaseSizeX = 40
+let imgBaseSizeY = 40
