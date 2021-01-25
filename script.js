@@ -1,8 +1,9 @@
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
-let intervalID = 0
+let intervalId = 0
 let score = 0
+let currentTime = 0
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
@@ -78,14 +79,6 @@ function update() {
 // }
 // --------------------------
 
-// document.addEventListener('keydown', () => {
-//   playerIncrement = -5
-// })
-
-// document.addEventListener('keyup', () => {
-//   playerIncrement = 2
-// })
-
 //----------coin-----------
 
 
@@ -117,26 +110,48 @@ function draw() {
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
 
   ctx.font = '20px verdana'
-  ctx.fillText('score:' + score, canvas.width - 100, 50)
+  ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
+
+  ctx.font = '20px verdana'
+  ctx.fillText('TIME:' + currentTime, canvas.width - 140, 80)
 
 }
 
-let i = 0
-let intervalId = setInterval(function(){
-  i++
-  console.log('hello')
-  if(i > 30){
-    clearTimeout(intervalId)
-  }
-},1000)
+// let i = 0
+//   let intervalIdEnd = setInterval(function(){
+//   i++
 
-intervalID = setInterval( () => {
+//   if(i > 0) {
+//     console.log(hello)
+//     clearInterval(intervalIdEnd)
+//   }
+// }, 1000)
+
+
+function countdown() {
+  let gameoverButton = document.querySelector('#start')
+  let count = document.querySelector('.button-area span')
+
+  gameoverButton.addEventListener('click', function(){
+    let intervalIdEnd = setInterval(function(){
+      i--
+      if(i > 0) {
+      console.log(count)
+      clearInterval(intervalIdEnd)
+    }
+  }, 1000)
+  window.requestAnimationFrame(countdown)
+})
+
+}
+
+
+intervalId = setInterval( () => {
   requestAnimationFrame(draw)
 }, 10)
 
-
-
-
-
+// window.addEventListener('load', () => {
+//   countdown()
+// })
 
 
