@@ -1,10 +1,16 @@
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
+// let currentTime = 0
 let intervalId = 0
 let score = 0
+let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
+let coins = [{x: 140, y: 0}]
+let playerX = 200  //start position
+let playerY = canvas.height - 165  //start position
+let vplayerY = 0  //speed
+let isJump = false  // jump or not jump
 
-// let currentTime = 0
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
@@ -15,22 +21,11 @@ fieldImg.src = 'images/bg-field.jpg'
 let playerImg = document.createElement('img')
 playerImg.src = 'images/player-right.png'
 
-let playerLeftImg = document.createElement('img')
-playerLeftImg.src = 'images/player-left.png'
-
 let rockImg = document.createElement('img')
 rockImg.src = 'images/rock.png'
 
 let coinImg = document.createElement('img')
 coinImg.src = 'images/coin.png'
-
-let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
-let coins = [{x: 300, y: 0}]
-
-let playerX = 200  //start position
-let playerY = canvas.height - 165  //start position
-let vplayerY = 0  //speed
-let isJump = false  // jump or not jump
 
 
 // --------------------------------------
@@ -47,14 +42,15 @@ function draw() {
       })
     }
   }
+
   document.querySelector("setImages")
   ctx.drawImage(playerImg, playerX, playerY)
-
   
+// -----------coin------------
   for (let i = 0; i < coins.length; i++) {
     ctx.drawImage(coinImg, coins[i].x, coins[i].y)
     coins[i].y++
-    if(coins[i].y == canvas.height - 200) {
+    if(coins[i].y == 100) {
       coins.push({
         x: Math.floor(Math.random()* canvas.width),
         y: 0
@@ -62,12 +58,19 @@ function draw() {
     }
   }
 
+//--------player------
+// if(playerX+playerImg.width >= rocks[i].x && playerX <=rocks[i){
+//   clearInterval(intervalId)
+//   alert('GAME OVER')
+//   location.reload()
+// }
+
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
-  ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
-  ctx.fillText('TIME:' + currentTime, canvas.width - 140, 80)
+  // ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
+  // ctx.fillText('TIME:' + currentTime, canvas.width - 140, 80)
 }
-// --------------------------------------
+// --------draw(END)------------------------------
 
 
 // --------Player----------
@@ -110,10 +113,10 @@ function update() {
     }
   }
   window.requestAnimationFrame(update)
-}
-// --------------------------
 
-//----------coin-----------
+}
+// --------player(END)------------------
+
 //----------------------------------
 // let i = 0
 //   let intervalIdEnd = setInterval(function(){
@@ -143,6 +146,7 @@ function update() {
 // }
 
 
+
 //--------timer--------
 let startBtn = document.querySelector('#start')
 let currentTime = document.querySelector('#timer')
@@ -157,10 +161,14 @@ startBtn.addEventListener('click', () => {
   clock.start(updateTime)
 })
 
-intervalId = setInterval( () => {
-  requestAnimationFrame(draw)
-}, 10)
+// intervalId = setInterval( () => {
+//   requestAnimationFrame(draw)
+// }, 10)
 
-// window.addEventListener('load', () => {
-//   countdown()
-// })
+
+
+window.addEventListener('load', () => {
+  intervalId = setInterval( () => {
+    requestAnimationFrame(draw)
+  }, 10)
+})

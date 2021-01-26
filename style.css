@@ -1,13 +1,11 @@
 body {
   font-family: 'press Start 2P', cirsive;
   margin: 0;
+  background-color: rgb(214, 236, 173);
+  text-align: center;
 }
 
-.bg {
-  background-color: rgb(214, 236, 173);
-  text-align: center;}
-
-.container, .btn, .game-board, .button-area, .footer {
+#intro, canvas, .gameover {
   width: 500px;
   margin: 0 auto;
 }
@@ -18,7 +16,7 @@ h1 {
   padding: 20px;
 }
 
-.button-area button {
+button {
   padding: 10px 20px;
   font-size: 30px;
   background-color: rgb(233, 156, 102);
@@ -28,7 +26,6 @@ h1 {
   text-align: center;
 }
 
-.footer {
-  text-align: center;
-  padding: 30px 0;
+canvas {
+  margin: 50px auto;
 }
