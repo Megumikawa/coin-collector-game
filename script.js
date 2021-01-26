@@ -25,7 +25,7 @@ let coinImg = document.createElement('img')
 coinImg.src = 'images/coin.png'
 
 let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
-let coin1 = [{x:40, y: 40 }]
+let coins = [{x: 300, y: 0}]
 
 let playerX = 200  //start position
 let playerY = canvas.height - 165  //start position
@@ -47,9 +47,21 @@ function draw() {
       })
     }
   }
-  
+  document.querySelector("setImages")
   ctx.drawImage(playerImg, playerX, playerY)
-  ctx.drawImage(coinImg, 20, 0)
+
+  
+  for (let i = 0; i < coins.length; i++) {
+    ctx.drawImage(coinImg, coins[i].x, coins[i].y)
+    coins[i].y++
+    if(coins[i].y == canvas.height - 200) {
+      coins.push({
+        x: Math.floor(Math.random()* canvas.width),
+        y: 0
+      })
+    }
+  }
+
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
   ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
@@ -102,12 +114,6 @@ function update() {
 // --------------------------
 
 //----------coin-----------
-coinImg.onload = function (){
-  getComputedStyle.drawImage(coinImg,)
-}
-
-
-
 //----------------------------------
 // let i = 0
 //   let intervalIdEnd = setInterval(function(){
@@ -146,6 +152,7 @@ let clock = new Timer ()
 function updateTime() {
   currentTime.innerHTML = clock.time
 }
+
 startBtn.addEventListener('click', () => {
   clock.start(updateTime)
 })
