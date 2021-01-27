@@ -4,11 +4,11 @@ canvas.style.border = '2px solid black'
 let currentTime = 0
 let intervalId = 0
 let score = 0
-let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
+let rocks = [{x:canvas.width - 100, y:canvas.height - 150 }]
 let coins = [{x: 140, y: 0}]
 let playerX = 200  //start position
 let playerY = canvas.height - 165  //start position
-let vplayerY = 0  //speed
+let vplayerY = 1  //speed
 let isJump = false  // jump or not jump
 let isGameOver = false
 
@@ -31,21 +31,30 @@ coinImg.src = 'images/coin.png'
 // --------------------------------------
 function draw() {
   ctx.drawImage(backImg, 0, 0)
-  
   for (let i = 0; i < rocks.length; i++) {
     ctx.drawImage(rockImg, rocks[i].x, rocks[i].y)
     rocks[i].x--
     if(rocks[i].x == 0) {
       rocks.push({
         x: canvas.width - 100,
-        y: canvas.height - 168
+        y: canvas.height - 150
       })
     }
-  }
+    // if(playerX < rocks[i].x + rockImg.width &&
+    //   playerX + rockImg.width > rocks[i].x &&
+    //   playerY < rocks[i].y + rockImg.height&&
+    //   playerY + rockImg.height > rocks[i].y) {
+    //   clearInterval(intervalId)
+    //   alert('GAME OVER')
+    //   isGame = true
+    //   gameOver()
+    // }
+  } 
+
 
   document.querySelector("setImages")
   ctx.drawImage(playerImg, playerX, playerY)
-  
+
 // -----------coin------------
   for (let i = 0; i < coins.length; i++) {
     ctx.drawImage(coinImg, coins[i].x, coins[i].y)
@@ -56,19 +65,14 @@ function draw() {
         y: 0
       })
     }
+    
+    // if() {
+
+    // }
   }
 
 //--------collision-------------
-function collision() {
-  for(let i = )
-  if(playerX+playerImg.width >= rocks[i].x && playerX <=rocks[i).x{
-    clearInterval(intervalId)
-    alert('GAME OVER')
-    location.reload()
-    isGame = true
-    gameOver()
-  }
-}
+
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
   // ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
