@@ -12,7 +12,7 @@ let playerY = canvas.height - 165  //start position
 let vplayerY = 1  //speed
 let isJump = false  // jump or not jump
 let isGameOver = false
-let 
+
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
@@ -167,10 +167,10 @@ function resetGame() {
   playerY = canvas.height - 165  //start position
 }
 
-function resultScore() {
-  clearInterval(intervalId)
+// function resultScore() {
+//   clearInterval(intervalId)
 
-}
+// }
 
 
 
