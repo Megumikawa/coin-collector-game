@@ -1,19 +1,31 @@
 body {
-  font-family: 'press Start 2P', cirsive;
+  font-family: 'Architects Daughter', cursive;
   margin: 0;
   background-color: rgb(214, 236, 173);
   text-align: center;
 }
 
-#intro, canvas, .gameover {
-  width: 500px;
+#intro {
+  width: 800px;
   margin: 0 auto;
 }
 
+#intro {
+  padding-top: 50px;
+  font-size: 30px;
+}
+
 h1 {
-  font-weight: 600;
-  margin: 0;
+  font-weight: bold;
+  margin: 0 0 0 30px;
   padding: 20px;
+  font-size: 100px;
+}
+
+ul {
+  padding: 0;
+  margin: 100px 0 0 120px;
+  list-style: none;
 }
 
 button {
@@ -22,8 +34,7 @@ button {
   background-color: rgb(233, 156, 102);
   color: antiquewhite;
   border-radius: 5px;
-  margin: 16px 200px;
-  text-align: center;
+  margin: 60px 200px;
 }
 
 canvas {
@@ -32,5 +43,15 @@ canvas {
 }
 
 .gameover {
-  display: none;
+  margin: 0 auto;
+  /* display: hide; */
+}
+
+.gameover img {
+  width: 60%;
+  height: auto;
+}
+
+.restartbtn {
+  margin-top: 0;
 }

@@ -3,17 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Hanalei&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Coin Collector</title>
 </head>
 <body>
   <section id="intro">
     <h1>Coin Collector</h1>
-    <p>Use arrow key to move and collect the coin with avoidind the rock </p>
+    <p>How many coin can you get with avoiding the rock?</p>
+    <p>Don't crach rock otherwise it's gameover!</p>
+    <ul>
+      <li>Arrow up: Jump and avoid the rock</li>
+      <li>Arrow Left: Move to left</li>
+      <li>Arrow Right: Move to reft</li>
+    </ul>
     <button class="startbtn" type="button">Start</button>
   </section>
   <div><canvas id="myCanvas" width="500" height="700"></canvas></div>
-  <div class="gameover"><button class="restartbtn" type="button">Restart</button></div>
+  <div class="gameover">
+    <img src="images/gameover.png" alt="gameoverimage">
+    <button class="restartbtn" type="button">Restart</button></div>
   <script src="base.js"></script>
   <script src="timer.js"></script>
   <script src="coin.js"></script>

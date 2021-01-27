@@ -1,10 +1,10 @@
-let canvas = document.querySelector('canvas')
+let canvas = document.querySelector('#myCanvas')
 let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
 let currentTime = 0
 let intervalId = 0
 let score = 0
-let rocks = [{x:canvas.width - 100, y:canvas.height - 150 }]
+let rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
 let coins = [{x: 140, y: 0}]
 let playerX = 200  //start position
 let playerY = canvas.height - 165  //start position
@@ -36,7 +36,7 @@ function draw() {
     rocks[i].x--
     if(rocks[i].x == 0) {
       rocks.push({
-        x: canvas.width - 100,
+        x: canvas.width - 10,
         y: canvas.height - 150
       })
     }
@@ -65,14 +65,9 @@ function draw() {
         y: 0
       })
     }
-    
-    // if() {
-
-    // }
   }
 
-//--------collision-------------
-
+  //---------------------------------------
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
   // ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
@@ -124,6 +119,10 @@ function update() {
 
 }
 // --------player(END)------------------
+
+
+
+
 
 //----------------------------------
 // let i = 0

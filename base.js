@@ -7,7 +7,7 @@ function hideMain() {
 
 function showGame() {
   let canvas = document.querySelector('#myCanvas')
-  canvas.style.display = 'block'
+  // canvas.style.display = 'block'
   restartGame()
 }
 
@@ -27,9 +27,14 @@ function startGame() {
   startbtn.addEventListener('click',function(){
     hideMain()
     startGame()
+    // canvas.style.display = 'block'
+    restartbtn.style.display = 'block'
   })
 }
 
+// function restartGame() {
+//   let restartGame = document.querySelector()
+// }
 // function updateGame() {
 //   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
