@@ -1,20 +1,20 @@
-class Timer {
-  constructor() {
-    this.currentTime = 0
-    this.intervalId = 0
-  }
+// class Timer {
+//   constructor() {
+//     this.currentTime = 0
+//     this.intervalId = 0
+//   }
 
-  startClick(start) {
-    this.intervalId = setIntervalId(() =>{
-      this.currentTime +=1
-      start()
-    },1000)
-  }
+//   startClick(start) {
+//     this.intervalId = setIntervalId(() =>{
+//       this.currentTime +=1
+//       start()
+//     },1000)
+//   }
 
-  restartClick(restart){ 
+//   restartClick(restart){ 
     
-  }
-}
+//   }
+// }
 
 
 

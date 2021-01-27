@@ -1,7 +1,7 @@
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
-// let currentTime = 0
+let currentTime = 0
 let intervalId = 0
 let score = 0
 let rocks = [{x:canvas.width - 100, y:canvas.height - 168 }]
@@ -10,6 +10,7 @@ let playerX = 200  //start position
 let playerY = canvas.height - 165  //start position
 let vplayerY = 0  //speed
 let isJump = false  // jump or not jump
+let isGameOver = false
 
 
 let backImg = document.createElement('img')
@@ -26,7 +27,6 @@ rockImg.src = 'images/rock.png'
 
 let coinImg = document.createElement('img')
 coinImg.src = 'images/coin.png'
-
 
 // --------------------------------------
 function draw() {
@@ -58,13 +58,17 @@ function draw() {
     }
   }
 
-//--------player------
-// if(playerX+playerImg.width >= rocks[i].x && playerX <=rocks[i){
-//   clearInterval(intervalId)
-//   alert('GAME OVER')
-//   location.reload()
-// }
-
+//--------collision-------------
+function collision() {
+  for(let i = )
+  if(playerX+playerImg.width >= rocks[i].x && playerX <=rocks[i).x{
+    clearInterval(intervalId)
+    alert('GAME OVER')
+    location.reload()
+    isGame = true
+    gameOver()
+  }
+}
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
   // ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
@@ -148,22 +152,25 @@ function update() {
 
 
 //--------timer--------
-let startBtn = document.querySelector('#start')
-let currentTime = document.querySelector('#timer')
+// let startBtn = document.querySelector('#start')
+// let currentTime = document.querySelector('#timer')
 
-let clock = new Timer ()
+// let clock = new Timer ()
 
-function updateTime() {
-  currentTime.innerHTML = clock.time
+// // function updateTime() {
+//   currentTime.innerHTML = clock.time
+// }
+
+// startBtn.addEventListener('click', () => {
+//   clock.start(updateTime)
+// })
+
+function initial(){
+  intervalId = setInterval( () => {
+    requestAnimationFrame(draw)
+  }, 10)
+  
 }
-
-startBtn.addEventListener('click', () => {
-  clock.start(updateTime)
-})
-
-// intervalId = setInterval( () => {
-//   requestAnimationFrame(draw)
-// }, 10)
 
 
 

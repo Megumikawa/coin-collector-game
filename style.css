@@ -28,4 +28,9 @@ button {
 
 canvas {
   margin: 50px auto;
+  display: none;
+}
+
+.gameover {
+  display: none;
 }
