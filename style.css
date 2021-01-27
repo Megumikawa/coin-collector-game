@@ -44,7 +44,7 @@ canvas {
 
 .gameover {
   margin: 0 auto;
-  /* display: hide; */
+  display: none;
 }
 
 .gameover img {

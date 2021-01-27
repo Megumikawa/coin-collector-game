@@ -2,23 +2,27 @@ let body = document.querySelector('body')
 
 function hideMain() {
   let hideMain = document.querySelector('#intro')
-  body.removeChild(hideMain)
+  hideMain.style.display = 'none'
 }
 
 function showGame() {
   let canvas = document.querySelector('#myCanvas')
-  // canvas.style.display = 'block'
-  restartGame()
+  canvas.style.display = 'block'
+  // restartGame()
 }
 
 function showGameover() {
   let gameOver = document.querySelector('.gameover')
   canvas.style.display = 'none'
   gameOver.style.display = 'block'
+  hideMain()
   let restartbtn = document.querySelector('.restartbtn')
   restartbtn.addEventListener('click', function(){
-  gameOver.style.display = 'none'
-  showGame()
+  // gameOver.style.display = 'none'
+  // showGame()
+  canvas.style.display = 'block'
+  resetGame()
+  initial()
   })
 }
 
@@ -26,21 +30,26 @@ function startGame() {
   let startbtn = document.querySelector('button')
   startbtn.addEventListener('click',function(){
     hideMain()
-    startGame()
-    // canvas.style.display = 'block'
-    restartbtn.style.display = 'block'
+    initial()
+    canvas.style.display = 'block'
   })
 }
 
-// function restartGame() {
-//   let restartGame = document.querySelector()
-// }
-// function updateGame() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height)
+function restartGame() {
+  let restartbtn = document.querySelector('.restartbtn')
+  restartbtn.addEventListener('click', function(){
+  canvas.style.display = 'block'
+  resetGame()
+  // rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
+  // coins = [{x: 140, y: 0}]
+  // playerX = 200  //start position
+  // playerY = canvas.height - 165  //start position
+  initial()
+  })
+}
 
-// }
 
 window.addEventListener('load', () => {
   startGame()
-  showGame()
 })
+
