@@ -49,11 +49,10 @@ function draw() {
       playerY < rocks[i].y + rockImg.height&&
       playerY + rockImg.height > rocks[i].y) {
       clearInterval(intervalId)
-      // alert('GAME OVER')
       isGame = true
       showGameover()
     }
-  } 
+  }
 
   document.querySelector("setImages")
   ctx.drawImage(playerImg, playerX, playerY)
@@ -68,6 +67,8 @@ function draw() {
         console.log("score")
         score += 30
         coins.splice(i, 1)
+        let coinAudio = new Audio('sounds/coin.wav')
+        coinAudio.play()
     }
     if(coins[i].y == 100) {
       coins.push({
@@ -83,14 +84,15 @@ function draw() {
     if(coins2[i].y + coinImg2.height > playerY &&
       coins2[i].x < playerX + playerImg.width &&
       coins2[i].x + coinImg2.width > playerX) {
-        // console.log("score")
         score += 10
         coins2.splice(i, 1)
+        let coinAudio = new Audio('sounds/coin.wav')
+        coinAudio.play()
     }
-    if(coins2[i].x < coins[i].x + coinImg.width &&
-      coins2[i].x + coinImg2.width > coins[i].x){
-        coins2.splice(i, 1)
-      }
+    // if(coins2[i].x < coins[i].x + coinImg.width &&
+    //   coins2[i].x + coinImg2.width > coins[i].x){
+    //     coins2.splice(i, 1)
+    //   }
     if(coins2[i].y == 100) {
       coins2.push({
         x: Math.floor(Math.random()* (canvas.width - coinImg2.width)),

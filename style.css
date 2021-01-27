@@ -55,3 +55,8 @@ canvas {
 .restartbtn {
   margin-top: 0;
 }
+
+.endScore {
+  margin-bottom: 80px;
+  font-size: 50px;
+}

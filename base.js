@@ -1,5 +1,6 @@
 let body = document.querySelector('body')
 
+
 function hideMain() {
   let hideMain = document.querySelector('#intro')
   hideMain.style.display = 'none'
@@ -22,6 +23,14 @@ function showGameover() {
   canvas.style.display = 'none'
   gameOver.style.display = 'block'
   hideMain()
+  let finalScore = document.querySelector('#score')
+  finalScore.innerHTML = `SCORE: ${score}`
+  gameoverAudio = new Audio('sounds/gameover.mp3')
+  gameoverAudio.play()
+  gameoverAudio.volume = 0.4
+  bgmAudio.pause()
+  bgmAudio.currentTime = 0
+  stopBgm()
 }
 
 function startGame() {
@@ -30,6 +39,9 @@ function startGame() {
     hideMain()
     initial()
     canvas.style.display = 'block'
+    let bgmAudio = new Audio('sounds/bgbgm.mp3')
+    bgmAudio.play()
+    bgmAudio.volume = 0.2
   })
 }
 
@@ -42,7 +54,10 @@ function restartGame() {
   })
 }
 
-
+function stopBgm() {
+  bgmAudio.pause()
+  bgmAudio.currentTime = 0
+}
 
 
 window.addEventListener('load', () => {
