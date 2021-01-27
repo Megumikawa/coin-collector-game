@@ -6,12 +6,13 @@ let intervalId = 0
 let score = 0
 let rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
 let coins = [{x: 140, y: 0}]
+let coins2 = [{x: 30, y: 0}]
 let playerX = 200  //start position
 let playerY = canvas.height - 165  //start position
 let vplayerY = 1  //speed
 let isJump = false  // jump or not jump
 let isGameOver = false
-
+let 
 
 let backImg = document.createElement('img')
 backImg.src = 'images/bg.png'
@@ -27,6 +28,9 @@ rockImg.src = 'images/rock.png'
 
 let coinImg = document.createElement('img')
 coinImg.src = 'images/coin.png'
+
+let coinImg2 = document.createElement('img')
+coinImg2.src = 'images/coin2.png'
 
 // --------------------------------------
 function draw() {
@@ -51,7 +55,6 @@ function draw() {
     }
   } 
 
-
   document.querySelector("setImages")
   ctx.drawImage(playerImg, playerX, playerY)
 
@@ -63,12 +66,34 @@ function draw() {
       coins[i].x < playerX + playerImg.width &&
       coins[i].x + coinImg.width > playerX) {
         console.log("score")
-        score += 10
+        score += 30
         coins.splice(i, 1)
     }
     if(coins[i].y == 100) {
       coins.push({
         x: Math.floor(Math.random()* (canvas.width - coinImg.width)),
+        y: 0
+      })
+    }
+  }
+
+  for (let i = 0; i < coins2.length; i++) {
+    ctx.drawImage(coinImg2, coins2[i].x, coins2[i].y)
+    coins2[i].y++
+    if(coins2[i].y + coinImg2.height > playerY &&
+      coins2[i].x < playerX + playerImg.width &&
+      coins2[i].x + coinImg2.width > playerX) {
+        // console.log("score")
+        score += 10
+        coins2.splice(i, 1)
+    }
+    if(coins2[i].x < coins[i].x + coinImg.width &&
+      coins2[i].x + coinImg2.width > coins[i].x){
+        coins2.splice(i, 1)
+      }
+    if(coins2[i].y == 100) {
+      coins2.push({
+        x: Math.floor(Math.random()* (canvas.width - coinImg2.width)),
         y: 0
       })
     }
@@ -123,9 +148,29 @@ function update() {
     }
   }
   window.requestAnimationFrame(update)
-
 }
 // --------player(END)------------------
+
+
+function initial(){
+  intervalId = setInterval( () => {
+    requestAnimationFrame(draw)
+  }, 10)
+  
+}
+
+function resetGame() {
+  rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
+  coins = [{x: 140, y: 0}]
+  coins2 = [{x: 30, y: 0}]
+  playerX = 200  //start position
+  playerY = canvas.height - 165  //start position
+}
+
+function resultScore() {
+  clearInterval(intervalId)
+
+}
 
 
 
@@ -175,20 +220,6 @@ function update() {
 //   clock.start(updateTime)
 // })
 
-function initial(){
-  intervalId = setInterval( () => {
-    requestAnimationFrame(draw)
-  }, 10)
-  
-}
-
-function resetGame() {
-  rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
-  coins = [{x: 140, y: 0}]
-  playerX = 200  //start position
-  playerY = canvas.height - 165  //start position
-
-}
 
 
 // window.addEventListener('load', () => {

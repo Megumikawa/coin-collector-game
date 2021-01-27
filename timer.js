@@ -38,14 +38,3 @@
 // }
 
 
-
-// let count = 0
-// let countup = function(){
-//   console.log(count++)
-// }
-// let id = setInterval(function(){
-//   countup()
-//   if( count > 5) {
-//     clearInterval(id)
-//   }
-// },1000)

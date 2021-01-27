@@ -49,6 +49,8 @@ function restartGame() {
 }
 
 
+
+
 window.addEventListener('load', () => {
   startGame()
 })
