@@ -56,9 +56,9 @@ function draw() {
       clearInterval(intervalId)
       isGame = true
       showGameover()
-      // let bgmAudio = new Audio('sounds/bgbgm.mp3')
-      // bgmAudio.pause()
-      // bgmAudio.currentTime = 0
+      let bgmAudio = new Audio('sounds/bgbgm.mp3')
+      bgmAudio.pause()
+      bgmAudio.currentTime = 0
     }
   }
   //----------enemy2(devil)----------//
@@ -129,6 +129,7 @@ function draw() {
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
   ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
+  // ctx.fillText((*), 250, 300)
   // ctx.fillText('TIME:' + currentTime, canvas.width - 140, 80)
 }
 
@@ -187,7 +188,7 @@ function initial(){
 
 }
 
-function restartGame() {
+function resetGame() {
   rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
   devils = [{x:canvas.width +150, y:canvas.height - 400 }]
   coins = [{x: 140, y: 0}]

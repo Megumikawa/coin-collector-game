@@ -25,9 +25,6 @@ function showGameover() {
   hideMain()
   let finalScore = document.querySelector('#score')
   finalScore.innerHTML = `SCORE: ${score}`
-  // let bgmAudio = new Audio('sounds/bgbgm.mp3')
-  // bgmAudio.pause()
-  // bgmAudio.currentTime = 0
   gameoverAudio = new Audio('sounds/gameover.mp3')
   gameoverAudio.play()
   gameoverAudio.volume = 0.4
@@ -41,7 +38,7 @@ function startGame() {
     canvas.style.display = 'block'
     let bgmAudio = new Audio('sounds/bgbgm.mp3')
     bgmAudio.play()
-    bgmAudio.volume = 0.2
+    bgmAudio.volume = 0.1
   })
 }
 
