@@ -30,7 +30,6 @@ function showGameover() {
   gameoverAudio = new Audio('sounds/gameover.mp3')
   gameoverAudio.play()
   gameoverAudio.volume = 0.1
-  
 }
 
 function startGame() {

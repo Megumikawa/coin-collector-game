@@ -28,7 +28,6 @@ playerImg.src = 'images/player-right.png'
 let playerLeftImg = document.createElement('img')
 playerLeftImg.src = 'images/player-left.png'
 
-
 let cloudLeftImg = document.createElement('img')
 cloudLeftImg.src = 'images/cloud.png'
 
@@ -88,7 +87,7 @@ function draw() {
       playerX + devilImg.width > devils[i].x &&
       playerY < devils[i].y + rockImg.height&&
       playerY + devilImg.height > devils[i].y) {
-      score -= 5
+      score -= 10
       ctx.font = '20px verdana'
       ctx.fillText('-5pt', devils[i].x + 10, (devils[i].y +devilImg.height) - 65) //display'-5pt'
       let devilAudio = new Audio('sounds/ng.wav')
@@ -111,7 +110,7 @@ function draw() {
         let coinAudio = new Audio('sounds/coin.wav')
         coinAudio.play()
     }
-    if(coins[i].y == 60) {
+    if(coins[i].y == 100) {
       coins.push({
         x: Math.floor(Math.random()* (canvas.width - coinImg.width)),
         y: 0
@@ -130,7 +129,7 @@ function draw() {
         let coinAudio = new Audio('sounds/coin.wav')
         coinAudio.play()
     }
-    if(coins2[i].y == 100) {
+    if(coins2[i].y == 60) {
       coins2.push({
         x: Math.floor(Math.random()* (canvas.width - coinImg2.width)),
         y: 0
