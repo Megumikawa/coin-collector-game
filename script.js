@@ -4,7 +4,8 @@ canvas.style.border = '2px solid black'
 let currentTime = 0
 let intervalId = 0
 let score = 0
-let rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
+let rocks = [{x:canvas.width + 10, y:canvas.height - 150 }]
+let devils = [{x:canvas.width +150, y:canvas.height - 400 }]
 let coins = [{x: 140, y: 0}]
 let coins2 = [{x: 30, y: 0}]
 let playerX = 200  //start position
@@ -26,6 +27,9 @@ playerImg.src = 'images/player-right.png'
 let rockImg = document.createElement('img')
 rockImg.src = 'images/rock.png'
 
+let devilImg = document.createElement('img')
+devilImg.src = 'images/devil.png'
+
 let coinImg = document.createElement('img')
 coinImg.src = 'images/coin.png'
 
@@ -35,10 +39,11 @@ coinImg2.src = 'images/coin2.png'
 // --------------------------------------
 function draw() {
   ctx.drawImage(backImg, 0, 0)
+  //--------enemy1(rock)---------//
   for (let i = 0; i < rocks.length; i++) {
     ctx.drawImage(rockImg, rocks[i].x, rocks[i].y)
     rocks[i].x--
-    if(rocks[i].x == 0) {
+    if(rocks[i].x == -20) {
       rocks.push({
         x: canvas.width - 10,
         y: canvas.height - 150
@@ -51,7 +56,29 @@ function draw() {
       clearInterval(intervalId)
       isGame = true
       showGameover()
+      // let bgmAudio = new Audio('sounds/bgbgm.mp3')
+      // bgmAudio.pause()
+      // bgmAudio.currentTime = 0
     }
+  }
+  //----------enemy2(devil)----------//
+  for (let i = 0; i < devils.length; i++) {
+    ctx.drawImage(devilImg, devils[i].x, devils[i].y)
+    devils[i].x--
+    if(devils[i].x == -40) {
+      devils.push({
+        x: canvas.width +150 ,
+        y: Math.floor(Math.random()* (canvas.height - devilImg.width))
+      })
+    }
+    if(playerX < devils[i].x + devilImg.width &&
+      playerX + devilImg.width > devils[i].x &&
+      playerY < devils[i].y + rockImg.height&&
+      playerY + devilImg.height > devils[i].y) {
+      score -= 5
+    //   let devilAudio = new Audio('sounds/devil.mp3')
+    //   devilAudio.play()
+    // }
   }
 
   document.querySelector("setImages")
@@ -65,7 +92,7 @@ function draw() {
       coins[i].x < playerX + playerImg.width &&
       coins[i].x + coinImg.width > playerX) {
         console.log("score")
-        score += 30
+        score += 50
         coins.splice(i, 1)
         let coinAudio = new Audio('sounds/coin.wav')
         coinAudio.play()
@@ -84,15 +111,11 @@ function draw() {
     if(coins2[i].y + coinImg2.height > playerY &&
       coins2[i].x < playerX + playerImg.width &&
       coins2[i].x + coinImg2.width > playerX) {
-        score += 10
+        score += 30
         coins2.splice(i, 1)
         let coinAudio = new Audio('sounds/coin.wav')
         coinAudio.play()
     }
-    // if(coins2[i].x < coins[i].x + coinImg.width &&
-    //   coins2[i].x + coinImg2.width > coins[i].x){
-    //     coins2.splice(i, 1)
-    //   }
     if(coins2[i].y == 100) {
       coins2.push({
         x: Math.floor(Math.random()* (canvas.width - coinImg2.width)),
@@ -163,69 +186,9 @@ function initial(){
 
 function resetGame() {
   rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
+  devils = [{x:canvas.width +150, y:canvas.height - 400 }]
   coins = [{x: 140, y: 0}]
   coins2 = [{x: 30, y: 0}]
   playerX = 200  //start position
   playerY = canvas.height - 165  //start position
 }
-
-// function resultScore() {
-//   clearInterval(intervalId)
-
-// }
-
-
-
-
-
-//----------------------------------
-// let i = 0
-//   let intervalIdEnd = setInterval(function(){
-//   i++
-
-//   if(i > 0) {
-//     console.log(hello)
-//     clearInterval(intervalIdEnd)
-//   }
-// }, 1000)
-
-// let gameoverButton = document.querySelector('#start')
-// function countdown() {
-//   // let count = document.querySelector('.button-area span')
-  
-//   gameoverButton.addEventListener('click', function(){
-//     let intervalIdEnd = setInterval(function(){
-//       i--
-//       if(i < -1 ) {
-//       console.log()
-//       clearInterval(intervalIdEnd)
-//     }
-//   }, 1000)
-//   window.requestAnimationFrame(countdown)
-// })
-
-// }
-
-
-
-//--------timer--------
-// let startBtn = document.querySelector('#start')
-// let currentTime = document.querySelector('#timer')
-
-// let clock = new Timer ()
-
-// // function updateTime() {
-//   currentTime.innerHTML = clock.time
-// }
-
-// startBtn.addEventListener('click', () => {
-//   clock.start(updateTime)
-// })
-
-
-
-// window.addEventListener('load', () => {
-//   intervalId = setInterval( () => {
-//     requestAnimationFrame(draw)
-//   }, 10)
-// })

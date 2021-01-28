@@ -25,12 +25,12 @@ function showGameover() {
   hideMain()
   let finalScore = document.querySelector('#score')
   finalScore.innerHTML = `SCORE: ${score}`
+  // let bgmAudio = new Audio('sounds/bgbgm.mp3')
+  // bgmAudio.pause()
+  // bgmAudio.currentTime = 0
   gameoverAudio = new Audio('sounds/gameover.mp3')
   gameoverAudio.play()
   gameoverAudio.volume = 0.4
-  bgmAudio.pause()
-  bgmAudio.currentTime = 0
-  stopBgm()
 }
 
 function startGame() {
@@ -52,11 +52,6 @@ function restartGame() {
   resetGame()
   initial()
   })
-}
-
-function stopBgm() {
-  bgmAudio.pause()
-  bgmAudio.currentTime = 0
 }
 
 
