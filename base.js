@@ -1,6 +1,5 @@
 let body = document.querySelector('body')
 
-
 function hideMain() {
   let hideMain = document.querySelector('#intro')
   hideMain.style.display = 'none'
@@ -31,6 +30,7 @@ function showGameover() {
   gameoverAudio = new Audio('sounds/gameover.mp3')
   gameoverAudio.play()
   gameoverAudio.volume = 0.1
+  
 }
 
 function startGame() {
@@ -39,9 +39,6 @@ function startGame() {
     hideMain()
     initial()
     canvas.style.display = 'block'
-    let bgmAudio = new Audio('sounds/bgbgm.mp3')
-    bgmAudio.play()
-    bgmAudio.volume = 0.1
   })
 }
 
@@ -53,7 +50,6 @@ function restartGame() {
   initial()
   })
 }
-
 
 window.addEventListener('load', () => {
   startGame()

@@ -13,6 +13,7 @@ let playerY = canvas.height - 165  //start position
 let vplayerY = 1  //speed
 let isJump = false  // jump or not jump
 let isGameOver = false
+let bgmAudio = new Audio('sounds/bgbgm.mp3')
 
 
 let backImg = document.createElement('img')
@@ -69,9 +70,8 @@ function draw() {
       clearInterval(intervalId)
       isGame = true
       showGameover()
-      // let bgmAudio = new Audio('sounds/bgbgm.mp3')
-      // bgmAudio.pause()
-      // bgmAudio.currentTime = 0
+      bgmAudio.pause()
+      bgmAudio.currentTime = 0
     }
   }
   //----------enemy2(devil)----------//
@@ -81,7 +81,7 @@ function draw() {
     if(devils[i].x == -40) {
       devils.push({
         x: canvas.width +150 ,
-        y: Math.floor(Math.random()* (canvas.height - devilImg.width))
+        y: Math.floor(Math.random()* ((canvas.height - fieldImg.height) - devilImg.height))
       })
     }
     if(playerX < devils[i].x + devilImg.width &&
@@ -106,13 +106,12 @@ function draw() {
     if(coins[i].y + coinImg.height > playerY &&
       coins[i].x < playerX + playerImg.width &&
       coins[i].x + coinImg.width > playerX) {
-        console.log("score")
         score += 50
         coins.splice(i, 1)
         let coinAudio = new Audio('sounds/coin.wav')
         coinAudio.play()
     }
-    if(coins[i].y == 100) {
+    if(coins[i].y == 60) {
       coins.push({
         x: Math.floor(Math.random()* (canvas.width - coinImg.width)),
         y: 0
@@ -173,8 +172,8 @@ function update() {
   } 
   if (input_key_buffer[39] && playerX + playerImg.width < canvas.width) {    //right
     playerX = playerX + 10
-  }  //&& playerX + playerImg.width > canvas.x
-  if (input_key_buffer[38] ) {    //jump
+  }  
+  if (input_key_buffer[38] && playerY > 70) {    //jump
     vplayerY = -8;
     isJump = true;
   }
@@ -194,10 +193,11 @@ function update() {
 
 
 function initial(){
+  bgmAudio.play()
+  bgmAudio.volume = 0.1
   intervalId = setInterval( () => {
     requestAnimationFrame(draw)
   }, 10)
-
 }
 
 function resetGame() {
@@ -207,4 +207,5 @@ function resetGame() {
   coins2 = [{x: 30, y: 0}]
   playerX = 200  //start position
   playerY = canvas.height - 165  //start position
+  bgmAudio = new Audio('sounds/bgbgm.mp3')
 }
