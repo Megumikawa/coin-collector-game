@@ -1,7 +1,5 @@
 # Coin-collector
 
-##　Description
-
 Coin-Collector is a game about collectiong two types of coins which falling from top to bottom.
 There are two things the player need to be careful. One is devils and the other is rocks. When you can't avoid the rock,
 you are automatically GAME OVER.
@@ -51,4 +49,4 @@ Developed this game during a first project week at a coding bootcamp Ironhack.
 [Presentation slides](https://docs.google.com/presentation/d/1-JP6aUQVnvrFvNxNDEE-PcuwlrV2vP0SGwoEcGru8Oo/edit?usp=sharing)
 
 
-<img src="./screenshot.png">
+<img src="./screenshot.png" width="300" height="400">
