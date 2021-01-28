@@ -78,7 +78,7 @@ function draw() {
   for (let i = 0; i < devils.length; i++) {
     ctx.drawImage(devilImg, devils[i].x, devils[i].y)
     devils[i].x--
-    if(devils[i].x == -40) {  //&& devil[i].y + devilImg.height < canvas.height - 150
+    if(devils[i].x == -40) {
       devils.push({
         x: canvas.width +150 ,
         y: Math.floor(Math.random()* (canvas.height - devilImg.width))
@@ -96,8 +96,6 @@ function draw() {
       devilAudio.volume = 0.1
     }
   }
-  setTimeout(devilmsg, 1000);
-
   document.querySelector("setImages")
   ctx.drawImage(playerImg, playerX, playerY)
 
@@ -140,6 +138,7 @@ function draw() {
       })
     }
   }
+
   //---------------------------------------
   ctx.drawImage(fieldImg, 0, canvas.height - fieldImg.height)
   ctx.font = '20px verdana'
@@ -174,8 +173,8 @@ function update() {
   } 
   if (input_key_buffer[39] && playerX + playerImg.width < canvas.width) {    //right
     playerX = playerX + 10
-  }  
-  if (input_key_buffer[38] ) {    //jump  //&& playerX + playerImg.width > canvas.x
+  }  //&& playerX + playerImg.width > canvas.x
+  if (input_key_buffer[38] ) {    //jump
     vplayerY = -8;
     isJump = true;
   }
