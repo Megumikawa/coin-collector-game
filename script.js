@@ -76,9 +76,10 @@ function draw() {
       playerY < devils[i].y + rockImg.height&&
       playerY + devilImg.height > devils[i].y) {
       score -= 5
-    //   let devilAudio = new Audio('sounds/devil.mp3')
-    //   devilAudio.play()
-    // }
+      let devilAudio = new Audio('sounds/ng.wav')
+      devilAudio.play()
+      devilAudio.volume = 0.1
+    }
   }
 
   document.querySelector("setImages")
@@ -130,6 +131,8 @@ function draw() {
   ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
   // ctx.fillText('TIME:' + currentTime, canvas.width - 140, 80)
 }
+
+
 // --------draw(END)------------------------------
 
 
@@ -181,10 +184,10 @@ function initial(){
   intervalId = setInterval( () => {
     requestAnimationFrame(draw)
   }, 10)
-  
+
 }
 
-function resetGame() {
+function restartGame() {
   rocks = [{x:canvas.width + 30, y:canvas.height - 150 }]
   devils = [{x:canvas.width +150, y:canvas.height - 400 }]
   coins = [{x: 140, y: 0}]
