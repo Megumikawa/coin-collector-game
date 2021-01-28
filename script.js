@@ -24,6 +24,12 @@ fieldImg.src = 'images/bg-field.jpg'
 let playerImg = document.createElement('img')
 playerImg.src = 'images/player-right.png'
 
+let cloudLeftImg = document.createElement('img')
+cloudLeftImg.src = 'images/cloud.png'
+
+let cloudRightImg = document.createElement('img')
+cloudRightImg.src = 'images/cloud.png'
+
 let rockImg = document.createElement('img')
 rockImg.src = 'images/rock.png'
 
@@ -39,6 +45,9 @@ coinImg2.src = 'images/coin2.png'
 // --------------------------------------
 function draw() {
   ctx.drawImage(backImg, 0, 0)
+  ctx.drawImage(cloudLeftImg, 70, 300)
+  ctx.drawImage(cloudRightImg, canvas.width - 160, 80)
+
   //--------enemy1(rock)---------//
   for (let i = 0; i < rocks.length; i++) {
     ctx.drawImage(rockImg, rocks[i].x, rocks[i].y)
@@ -161,7 +170,7 @@ function update() {
   } 
   if (input_key_buffer[39] && playerX + playerImg.width < canvas.width) {    //right
     playerX = playerX + 10
-  } 
+  }
   if (input_key_buffer[38]) {    //jump
     vplayerY = -8;
     isJump = true;
