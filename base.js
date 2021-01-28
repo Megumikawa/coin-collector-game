@@ -9,6 +9,9 @@ function hideMain() {
 function showGame() {
   let canvas = document.querySelector('#myCanvas')
   canvas.style.display = 'block'
+  gameoverAudio = new Audio('sounds/gameover.mp3')
+  gameoverAudio.play()
+  gameoverAudio.volume = 0.1
 }
 
 let restartbtn = document.querySelector('.restartbtn')
@@ -27,7 +30,7 @@ function showGameover() {
   finalScore.innerHTML = `SCORE: ${score}`
   gameoverAudio = new Audio('sounds/gameover.mp3')
   gameoverAudio.play()
-  gameoverAudio.volume = 0.4
+  gameoverAudio.volume = 0.1
 }
 
 function startGame() {

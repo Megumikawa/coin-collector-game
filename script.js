@@ -24,6 +24,10 @@ fieldImg.src = 'images/bg-field.jpg'
 let playerImg = document.createElement('img')
 playerImg.src = 'images/player-right.png'
 
+let playerLeftImg = document.createElement('img')
+playerLeftImg.src = 'images/player-left.png'
+
+
 let cloudLeftImg = document.createElement('img')
 cloudLeftImg.src = 'images/cloud.png'
 
@@ -65,9 +69,9 @@ function draw() {
       clearInterval(intervalId)
       isGame = true
       showGameover()
-      let bgmAudio = new Audio('sounds/bgbgm.mp3')
-      bgmAudio.pause()
-      bgmAudio.currentTime = 0
+      // let bgmAudio = new Audio('sounds/bgbgm.mp3')
+      // bgmAudio.pause()
+      // bgmAudio.currentTime = 0
     }
   }
   //----------enemy2(devil)----------//
@@ -85,6 +89,8 @@ function draw() {
       playerY < devils[i].y + rockImg.height&&
       playerY + devilImg.height > devils[i].y) {
       score -= 5
+      ctx.font = '20px verdana'
+      ctx.fillText('-5pt', devils[i].x + 10, (devils[i].y +devilImg.height) - 65) //display'-5pt'
       let devilAudio = new Audio('sounds/ng.wav')
       devilAudio.play()
       devilAudio.volume = 0.1
@@ -170,8 +176,8 @@ function update() {
   } 
   if (input_key_buffer[39] && playerX + playerImg.width < canvas.width) {    //right
     playerX = playerX + 10
-  }
-  if (input_key_buffer[38]) {    //jump
+  }  //&& playerX + playerImg.width > canvas.x
+  if (input_key_buffer[38] ) {    //jump
     vplayerY = -8;
     isJump = true;
   }

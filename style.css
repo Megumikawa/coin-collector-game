@@ -1,5 +1,5 @@
 body {
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Quicksand', sans-serif;
   margin: 0;
   background-color: rgb(214, 236, 173);
   text-align: center;
@@ -24,8 +24,13 @@ h1 {
 
 ul {
   padding: 0;
-  margin: 100px 0 0 120px;
+  margin: 100px 0 0 250px;
   list-style: none;
+  text-align: left;
+}
+
+li {
+  margin-bottom: 20px;
 }
 
 button {
