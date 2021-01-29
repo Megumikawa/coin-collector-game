@@ -89,7 +89,7 @@ function draw() {
       playerY + devilImg.height > devils[i].y) {
       score -= 10
       ctx.font = '20px verdana'
-      ctx.fillText('-5pt', devils[i].x + 10, (devils[i].y +devilImg.height) - 65) //display'-5pt'
+      ctx.fillText('-10pt', devils[i].x + 10, (devils[i].y +devilImg.height) - 65) //display'-5pt'
       let devilAudio = new Audio('sounds/ng.wav')
       devilAudio.play()
       devilAudio.volume = 0.1
