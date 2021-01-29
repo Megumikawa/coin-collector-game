@@ -204,4 +204,5 @@ function resetGame() {
   playerX = 200  //start position
   playerY = canvas.height - 165  //start position
   bgmAudio = new Audio('sounds/bgbgm.mp3')
+  score = 0
 }
