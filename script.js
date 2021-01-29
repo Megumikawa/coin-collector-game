@@ -143,9 +143,7 @@ function draw() {
   ctx.fillText('SCORE:' + score, canvas.width - 140, 50)
 }
 
-
 // --------draw(END)------------------------------
-
 
 // --------Player----------
 let input_key_buffer = new Array();
@@ -189,7 +187,6 @@ function update() {
   window.requestAnimationFrame(update)
 }
 // --------player(END)------------------
-
 
 function initial(){
   bgmAudio.play()
