@@ -16,7 +16,9 @@ The gold coin is +50 points, the silver coins is +30 points and when you hit the
 
 
 ### How to play
-Use the arrow key to move right forward, left forward and jump.
+Right arrow key => Move right forward
+Left arrow key => Move left forward
+Up arrow key => Jump 
 
 
 ## Data structure
